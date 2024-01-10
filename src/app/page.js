@@ -1,5 +1,5 @@
-import { getClient } from '@/lib/client'
-import { gql } from '@apollo/client'
+import { getClient } from "@/lib/client";
+import { gql } from "@apollo/client";
 
 async function loadData() {
   const { data } = await getClient().query({
@@ -13,25 +13,23 @@ async function loadData() {
           }
         }
       }
-    `
-  })
-  return data.characters.results
+    `,
+  });
+  return data.characters.results;
 }
 
 async function HomePage() {
-  const characters = await loadData()
+  const characters = await loadData();
   return (
-    <div className='grid grid-cols-3'>
-      {
-        characters.map(character => (
-          <div key={character.id}>
-            <h3>{character.name}</h3>
-            <img src={character.image} alt={character.name} />
-          </div>
-        ))
-      }
+    <div className="grid grid-cols-3">
+      {characters.map((character) => (
+        <div key={character.id}>
+          <h3>{character.name}</h3>
+          <img src={character.image} alt={character.name} />
+        </div>
+      ))}
     </div>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;
