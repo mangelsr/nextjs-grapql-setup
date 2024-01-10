@@ -21,12 +21,11 @@ async function loadData() {
 async function HomePage() {
   const characters = await loadData()
   return (
-    <div>
-      <h1>Characters...</h1>
+    <div className='grid grid-cols-3'>
       {
         characters.map(character => (
           <div key={character.id}>
-            Name: {character.name}
+            <h3>{character.name}</h3>
             <img src={character.image} alt={character.name} />
           </div>
         ))
